@@ -5,19 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="1400" MinHeight="450" MinWidth="1400" MaxWidth="1400">
     <Grid>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,44" Name="listView" SelectionChanged="listView_SelectionChanged">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="24*"/>
+        </Grid.ColumnDefinitions>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,0,44" Name="listView" SelectionChanged="listView_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding id}"/>
-                    <GridViewColumn Header="Imię" Width="150" DisplayMemberBinding="{Binding name}"/>
-                    <GridViewColumn Header="Nazwisko" Width="150" DisplayMemberBinding="{Binding sname}"/>
                     <GridViewColumn Header="Pesel" Width="150" DisplayMemberBinding="{Binding pesel}"/>
+                    <GridViewColumn Header="Imię" Width="150" DisplayMemberBinding="{Binding name}"/>
+                    <GridViewColumn Header="Drugie imię*" Width="150" DisplayMemberBinding="{Binding secondName}"/>
+                    <GridViewColumn Header="Nazwisko" Width="150" DisplayMemberBinding="{Binding surname}"/>
+                    <GridViewColumn Header="Data urodzenia" Width="150" DisplayMemberBinding="{Binding dob}"/>
+                    <GridViewColumn Header="Telefon*" Width="150" DisplayMemberBinding="{Binding phone}"/>
+                    <GridViewColumn Header="Adres" Width="150" DisplayMemberBinding="{Binding adress}"/>
+                    <GridViewColumn Header="Miejscowość" Width="150" DisplayMemberBinding="{Binding place}"/>
+                    <GridViewColumn Header="Kod pocztowy" Width="150" DisplayMemberBinding="{Binding postCode}"/>
+
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="666,0,0,10" VerticalAlignment="Bottom" Click="Button_Click" RenderTransformOrigin="0.591,-0.303" />
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="634,0,0,10" VerticalAlignment="Bottom" Click="Button_Click" RenderTransformOrigin="0.591,-0.303" Grid.Column="1" />
 
     </Grid>
 </Window>

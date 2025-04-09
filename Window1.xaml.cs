@@ -30,8 +30,17 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Record record = new Record(int.Parse(idBox.Text), nameBox.Text, snameBox.Text, peselBox.Text);
-            mainWindow.listView.Items.Add(record);
+            /*if(!idBox.Text.All(c => Char.IsNumber(c)))
+            {
+                idBox.Background = Brushes.Red;
+                return;
+            }
+            else
+            {
+                idBox.Background = Brushes.White;
+            }*/
+
+            mainWindow.AddRecord(1, nameBox.Text, surnameBox.Text, peselBox.Text);
         }
     }
 }
