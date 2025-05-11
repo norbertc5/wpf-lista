@@ -6,14 +6,33 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="1400" MinHeight="450" MinWidth="1400" MaxWidth="1400">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="24*"/>
         </Grid.ColumnDefinitions>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,0,44" Name="listView" SelectionChanged="listView_SelectionChanged" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+        <Menu x:Name="menu" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="18" Margin="0,0,1210,0">
+            <MenuItem Header="Plik">
+                <MenuItem Header="Nowy" IsEnabled="False"/>
+                <MenuItem Header="Otwórz" Click="Open_Click"/>
+                <MenuItem Header="Zapisz" Click="Save_Click"/>
+                <Separator/>
+                <MenuItem Header="Wyjdź" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Edytuj">
+                <MenuItem Header="Nowy" Click="Add_Click"/>
+                <MenuItem Header="Usuń zaznaczone" Click="RemoveSelected_Click"/>
+                <MenuItem Header="Edytuj zaznaczone" Click="Edit_Click"/>
+            </MenuItem>
+            <MenuItem Header="O programie" Click="About_Click"></MenuItem>
+        </Menu>
+
+
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,36,0,0" Name="listView" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionMode="Single">
             <ListView.View>
-                <GridView>
+                <GridView AllowsColumnReorder="False">
                     <GridViewColumn Header="Pesel" Width="150" DisplayMemberBinding="{Binding pesel}"/>
                     <GridViewColumn Header="Imię" Width="150" DisplayMemberBinding="{Binding name}"/>
                     <GridViewColumn Header="Drugie imię*" Width="150" DisplayMemberBinding="{Binding secondName}"/>
@@ -27,7 +46,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="634,0,0,10" VerticalAlignment="Bottom" Click="Button_Click" RenderTransformOrigin="0.591,-0.303" Grid.Column="1" />
 
     </Grid>
 </Window>
